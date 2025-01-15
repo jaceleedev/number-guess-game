@@ -17,6 +17,7 @@ int main()
     int playAgain;
     enum Difficulty difficulty;
     int maxNumber = 100; // 기본 숫자 범위
+    int bestScore = -1;  // 최고 점수 (초기값: 기록 없음)
 
     // 랜덤 숫자 생성을 위한 시드 초기화
     srand(time(NULL));
@@ -74,6 +75,17 @@ int main()
                 printf("정답입니다! 시도 횟수: %d번\n", attempts);
                 break;
             }
+        }
+
+        // 최고 점수 업데이트
+        if (bestScore == -1 || attempts < bestScore)
+        {
+            bestScore = attempts;
+            printf("축하합니다! 새로운 최고 점수: %d번\n", bestScore);
+        }
+        else
+        {
+            printf("최고 점수: %d번\n", bestScore);
         }
 
         // 재시작 여부 확인
